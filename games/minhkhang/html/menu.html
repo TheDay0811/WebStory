@@ -39,17 +39,10 @@
         <div class="hero-content">
             <p class="subtitle">SOVEREIGN MIGHT REVEALED</p>
             <h1 class="title">HƯƠNG VỊ CỦA HOÀNG TỘC<br><span class="highlight">TỬU LONG</span></h1>
-            <p class="desc">Witness the convergence of ancient Eastern magic and modern luxury. A legacy forged in gold,
-                whispered in smoke, and destined for the sovereign.</p>
-            <div class="hero-actions">
-                <button class="btn-primary">ENTER THE DYNASTY</button>
-                <button class="btn-outline">VIEW ARTIFACTS</button>
-            </div>
+            <p class="desc">The convergence of luxury.</p>
+
         </div>
-        <div class="scroll-indicator">
-            <span>SCROLL TO ASCEND</span>
-            <div class="line"></div>
-        </div>
+
     </section>
 
     <!-- Story / Legend Section -->
@@ -60,17 +53,15 @@
             </div>
             <div class="story-content">
                 <h2 class="section-title"><span class="line-accent"></span>The Eternal Legend</h2>
-                <p class="story-text">For millennia, Tửu Long has stood as the ultimate sentinel of power and wisdom.
-                    Our collection breathes life into this myth, transforming ancient symbolism into a digital and
-                    physical reality of unparalleled luxury.</p>
+                <p class="story-text">For millennia, the Dragon has stood as the ultimate sentinel of power, wisdom, and hidden treasures. Tửu Long breathes life into this ancient myth, creating a sanctuary where dark luxury meets Eastern heritage. Here, through the transformative artistry of fire and spirit, rare elements are awakened into an unparalleled cocktail experience.</p>
                 <div class="story-stats">
                     <div class="stat">
                         <h3>Heritage</h3>
-                        <p>Rooted in the dynasties of the East, crafted for the global elite.</p>
+                        <p>Rooted in the mystic dynasties of the East, guarded as a hidden vault for the modern elite.</p>
                     </div>
                     <div class="stat">
-                        <h3>Craft</h3>
-                        <p>Each artifact is a testament to meticulous precision and digital leaf artistry.</p>
+                        <h3>Alchemy</h3>
+                        <p>Each creation is a testament to meticulous precision, transforming exclusive spirits into liquid art.</p>
                     </div>
                 </div>
             </div>
@@ -88,11 +79,15 @@
     <!-- Main Footer -->
     <footer class="footer" id="contact">
         <h3>TỬU LONG</h3>
+        <div class="footer-contact">
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>12/67/36-BFSDFS</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>09xxxxxxxxx</span>
+        </div>
         <div class="footer-links">
-            <a href="#">PRIVACY POLICY</a>
-            <a href="#">TERMS OF SERVICE</a>
-            <a href="#">MEDIA</a>
-            <a href="#">GLOBAL PRESENCE</a>
+            <a href="#" class="footer-info-link" data-info="privacy">PRIVACY POLICY</a>
+            <a href="#" class="footer-info-link" data-info="terms">TERMS OF SERVICE</a>
+            <a href="#" class="footer-info-link" data-info="media">MEDIA</a>
+            <a href="#" class="footer-info-link" data-info="global">GLOBAL PRESENCE</a>
         </div>
         <p class="copyright">&copy; 2026 TỬU LONG. ALL RIGHTS RESERVED.</p>
     </footer>
@@ -112,6 +107,15 @@
                     <div id="modalDesc" class="modal-desc-body"></div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal Thông Tin Footer -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="info-modal-content">
+            <button class="close-btn" id="closeInfoModal">×</button>
+            <h2 id="infoModalTitle">Title</h2>
+            <div id="infoModalBody" class="info-modal-body"></div>
         </div>
     </div>
 
@@ -163,6 +167,54 @@
             document.querySelectorAll('.nav-links a').forEach(a => {
                 a.classList.toggle('active', a.getAttribute('href') === '#' + current);
             });
+        });
+
+        // Footer Info Modals
+        const infoData = {
+            'privacy': {
+                title: 'Privacy Policy',
+                body: '<p>Tại Tửu Long, chúng tôi cam kết bảo mật tuyệt đối thông tin cá nhân của quý khách. Mọi dữ liệu đều được mã hóa và bảo vệ nghiêm ngặt theo tiêu chuẩn quốc tế.</p><p>Vui lòng liên hệ với chúng tôi nếu bạn có bất kỳ câu hỏi nào về chính sách quyền riêng tư này.</p>'
+            },
+            'terms': {
+                title: 'Terms of Service',
+                body: '<p>Khi sử dụng dịch vụ của Tửu Long, quý khách đồng ý với các điều khoản dịch vụ của chúng tôi. Chúng tôi bảo lưu quyền thay đổi các điều khoản này vào bất kỳ lúc nào.</p><p>Sản phẩm chỉ dành cho người từ 18 tuổi trở lên.</p>'
+            },
+            'media': {
+                title: 'Media',
+                body: '<p>Tất cả hình ảnh, video và nội dung trên trang web này đều thuộc bản quyền của Tửu Long. Nghiêm cấm sao chép, phân phối mà không có sự cho phép bằng văn bản.</p><p>Hiện tại chúng tôi đang hợp tác truyền thông chiến lược cùng <strong>THEDAY</strong> để mang đến những trải nghiệm đẳng cấp nhất.</p><p>Đối với các yêu cầu truyền thông, vui lòng liên hệ qua email truyền thông của chúng tôi.</p>'
+            },
+            'global': {
+                title: 'Global Presence',
+                body: '<p>Tửu Long tự hào là một chi nhánh trực thuộc một tập đoàn đa quốc gia lớn, hiện đã có mặt và hoạt động mạnh mẽ tại hơn 11 quốc gia trên toàn thế giới.</p><p>Sự hậu thuẫn từ mạng lưới toàn cầu giúp chúng tôi không ngừng nâng tầm trải nghiệm và mang đến những tinh hoa tuyệt hảo nhất cho quý khách.</p>'
+            }
+        };
+
+        const infoModal = document.getElementById('infoModal');
+        const infoModalTitle = document.getElementById('infoModalTitle');
+        const infoModalBody = document.getElementById('infoModalBody');
+        const closeInfoModal = document.getElementById('closeInfoModal');
+
+        document.querySelectorAll('.footer-info-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const infoType = this.getAttribute('data-info');
+                const data = infoData[infoType];
+                if(data) {
+                    infoModalTitle.textContent = data.title;
+                    infoModalBody.innerHTML = data.body;
+                    infoModal.classList.add('active');
+                }
+            });
+        });
+
+        closeInfoModal.addEventListener('click', () => {
+            infoModal.classList.remove('active');
+        });
+
+        infoModal.addEventListener('click', (e) => {
+            if (e.target === infoModal) {
+                infoModal.classList.remove('active');
+            }
         });
     </script>
 </body>
