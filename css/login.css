@@ -1,0 +1,320 @@
+/* RESET VÀ CÀI ĐẶT CƠ BẢN */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+    /* Sử dụng hình ảnh thư viện làm background */
+    background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=2000&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* LỚP PHỦ NỀN TỐI (Tạo cảm giác bí ẩn, huyền bí) */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(18, 18, 22, 0.85) 0%, rgba(8, 8, 10, 0.98) 100%);
+    z-index: 1;
+}
+
+/* LOGO GÓC TRÁI */
+.top-logo {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    font-size: 28px;
+    font-weight: 300; /* Font mỏng theo thiết kế */
+    letter-spacing: 2px;
+    z-index: 2;
+    color: #e0e0e0;
+}
+
+/* CONTAINER NỘI DUNG CHÍNH */
+.login-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: -30px; /* Nhấc nhẹ lên so với tâm */
+}
+
+/* TIÊU ĐỀ STORY LỚN */
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 110px; /* Cực lớn */
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin: 0 0 -5px 0;
+    color: #dbe4ef; /* Trắng ngả một chút xanh dương/xám */
+    text-shadow: 0 5px 30px rgba(0, 0, 0, 0.8);
+}
+
+.subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin: 0 0 50px 0;
+    color: #f0f0f0;
+}
+
+/* KHUNG ĐĂNG NHẬP */
+.login-box {
+    background: rgba(14, 14, 16, 0.95); /* Hộp rất tối */
+    padding: 45px 40px;
+    border-radius: 4px;
+    width: 320px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.03); /* Viền mờ rất nhẹ để tách biệt không gian */
+}
+
+/* NHÓM INPUT */
+.input-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #6a6a6a;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.input-group input {
+    background: #232325;
+    border: 1px solid #232325;
+    padding: 16px;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    background: #2a2a2c;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.input-group input::placeholder {
+    color: #555555;
+    letter-spacing: 0.5px;
+}
+
+/* Định dạng riêng cho thẻ password hiện dấu chấm nhỏ */
+.input-group input[type="password"] {
+    letter-spacing: 3px;
+    font-size: 16px;
+}
+
+.input-group input[type="password"]::placeholder {
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+
+/* NÚT ĐĂNG NHẬP */
+.login-btn {
+    background: #cfcfcf;
+    color: #111111;
+    border: none;
+    padding: 16px;
+    width: 100%;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+.login-btn:hover {
+    background: #e6e6e6;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+/* ===== FOOTER TÁC GIẢ ===== */
+.author-footer {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.author-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.18);
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.author-footer:hover .author-name {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* NÚT QR TRÒN NHỎ */
+.qr-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(4px);
+}
+
+.qr-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.qr-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+}
+
+/* ===== MODAL QR ===== */
+.qr-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.qr-modal.active {
+    pointer-events: all;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+}
+
+.qr-popup {
+    background: rgba(15, 15, 18, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.04);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 340px;
+}
+
+.qr-modal.active .qr-popup {
+    transform: scale(1);
+}
+
+.qr-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+    padding: 2px 6px;
+}
+
+.qr-close:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.qr-label {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+}
+
+.qr-img-wrap {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.qr-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.qr-placeholder {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.qr-note {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+    letter-spacing: 0.5px;
+}

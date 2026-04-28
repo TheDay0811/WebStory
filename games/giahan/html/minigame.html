@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Minigame: Khắc tinh KPI</title>
+    <!-- Nhúng Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Montserrat:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/minigame.css">
+    <link rel="icon" type="image/png" href="../image/sói.png">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Nút Back Về màn sổ tay -->
+        <a href="index.html" class="back-link serif-font">&lt;- Back</a>
+        
+        <!-- Nút Loa Tắt/Bật Nhạc -->
+        <button id="audio-toggle-btn" class="audio-btn" title="Bật/tắt nhạc">🔊</button>
+        
+        <!-- Bảng điều khiển -->
+        <div class="hud">
+            <div class="kpi-text marker-font">KPI: <span id="score">0</span>/25</div>
+            <div class="timer-text marker-font">Time: <span id="timer">120</span>s</div>
+        </div>
+
+        <!-- Sàn Đấu -->
+        <div class="game-stage">
+            <div class="canvas-frame dashed-border">
+                 <!-- Ảnh hiển thị thay đổi liên tục 6 khung hình -->
+                 <img src="../image/1.png" id="character-img" alt="Monster" draggable="false">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Script Điều phối -->
+    <script src="../js/minigame.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Thế Giới Của Gia Hân - Màn 4</title>
+    <!-- Nhúng Font chuẩn Scrapbook -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Montserrat:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Nhúng CSS độc quyền của Gia Hân -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../image/cú mèo.png">
+    <style>
+        /* Bố cục flex để đẩy phần nút Play xuống cuối màn hình */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        .scrapbook-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .empty-space {
+            flex-grow: 1;
+            /* Tự động đẩy nút Play xuống */
+            min-height: 150vh;
+            /* Làm trang dài ra một chút */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .placeholder-text {
+            color: #ccc;
+            font-size: 2rem;
+            text-align: center;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scrapbook-container">
+
+        <!-- NỘI DUNG NHẬT KÝ MÀN 4 -->
+        <style>
+            .diary-paper {
+                background-color: #fdfdfd;
+                background-image:
+                    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+                    linear-gradient(#eee .1em, transparent .1em);
+                background-size: 100% 2em;
+                padding: 2em 2em 2em 100px;
+                min-height: 60vh;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                margin: 20px auto;
+                position: relative;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .diary-paper::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 20px;
+                width: 40px;
+                background-image:
+                    radial-gradient(circle at 20px 30px, #d4d4d4 6px, transparent 7px),
+                    radial-gradient(circle at 20px 70px, #d4d4d4 6px, transparent 7px),
+                    radial-gradient(circle at 20px 110px, #d4d4d4 6px, transparent 7px);
+                background-size: 100% 120px;
+                border-right: 2px solid #e0e0e0;
+            }
+
+            .diary-text {
+                line-height: 2em;
+                /* match the background lines */
+                font-size: 1.8rem;
+                color: #333;
+                margin-top: 1em;
+            }
+
+            .diary-date {
+                text-align: right;
+                font-size: 1.4rem;
+                color: #666;
+                margin-bottom: 10px;
+            }
+
+            /* Responsive cho điện thoại */
+            @media (max-width: 768px) {
+                .diary-paper {
+                    padding: 2em 1em 2em 70px;
+                    background-image:
+                        linear-gradient(90deg, transparent 49px, #abced4 49px, #abced4 51px, transparent 51px),
+                        linear-gradient(#eee .1em, transparent .1em);
+                }
+
+                .diary-paper::before {
+                    left: 10px;
+                    width: 30px;
+                    background-image:
+                        radial-gradient(circle at 15px 30px, #d4d4d4 5px, transparent 6px),
+                        radial-gradient(circle at 15px 70px, #d4d4d4 5px, transparent 6px),
+                        radial-gradient(circle at 15px 110px, #d4d4d4 5px, transparent 6px);
+                }
+
+                .diary-text {
+                    font-size: 1.4rem;
+                }
+            }
+        </style>
+
+        <div class="diary-paper">
+            <div class="marker-font diary-date">Ngày 11 Tháng 5 </div>
+            <div class="marker-font diary-text">
+                Hôm nay mình đi kiểm tra sức khỏe để nộp lại cho trường do mình bị bắt hút thuốc lá điện tử ở nhà vệ
+                sinh =))<br><br>
+                Mẹ mình bảo lỡ rồi thì đi khám tổng quát luôn.<br><br>
+                Kết quả tớ không được nghe <br><br>
+                nhưng mẹ khóc rất nhiều 😭<br><br>
+                từ đó tớ bị ở lại bệnh viện, người ta dẫn nhiều ống vô người tớ, tớ đau lắm.<br><br>
+
+                Gia Hân ❤️
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script tương tác riêng Màn 4 -->
+    <script src="../js/level4.js"></script>
+</body>
+
+</html>

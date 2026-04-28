@@ -1,0 +1,130 @@
+/* Giao diện chung Minigame giữ nguyên tông Sổ tay */
+body {
+    background-color: #fcf4e4;
+    color: #1a1a1a;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    user-select: none; /* Cấm bôi đen text khi người chơi nhấp đúp màn hình */
+    -webkit-user-select: none;
+}
+
+.marker-font { font-family: 'Patrick Hand', cursive; }
+.serif-font { font-family: 'Playfair Display', serif; }
+
+.game-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 0;
+    text-align: center;
+}
+
+/* Nút quay lại */
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #111;
+    font-size: 1.8rem;
+    font-weight: bold;
+    float: left;
+    margin-bottom: 20px;
+    border-bottom: 3px solid transparent;
+    transition: 0.2s;
+}
+.back-link:hover {
+    border-bottom: 3px solid #111;
+}
+
+/* Nút Loa Tắt/Mở nhạc */
+.audio-btn {
+    float: right;
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding: 0;
+    transition: transform 0.2s;
+}
+.audio-btn:hover {
+    transform: scale(1.15) rotate(10deg);
+}
+
+/* Thanh HUD hiển thị điểm */
+.hud {
+    clear: both;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.kpi-text { color: #d00; } /* Điểm màu đỏ nổi bật */
+.timer-text { color: #111; }
+
+.game-stage {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.canvas-frame {
+    border: 4px dashed #111;
+    padding: 15px;
+    background: transparent;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#character-img {
+    width: 100%;
+    height: auto;
+    max-height: 65vh; /* Khống chế chiều cao cho vừa Màn Hình ĐT */
+    display: block;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.1s;
+    user-drag: none; /* cấm kéo ảnh */
+    -webkit-user-drag: none;
+}
+#character-img:active {
+    transform: scale(0.96); /* Hiệu ứng phồng xẹp khi ấn ngón tay xuống */
+}
+
+/* Các Class trạng thái */
+.hide {
+    display: none !important;
+}
+
+.retry-btn, .next-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 15px 40px;
+    font-size: 2.2rem;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.retry-btn:hover, .next-btn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+.next-btn {
+    background-color: #0b6623; /* Màu xanh win game */
+}
+.next-btn:hover {
+    background-color: #147c31;
+}
+
+/* Điên Thoại */
+@media (max-width: 768px) {
+    .hud { font-size: 2rem; }
+    .canvas-frame { padding: 8px; border-width: 3px; }
+}

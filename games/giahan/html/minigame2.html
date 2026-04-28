@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Minigame 2: Bắn Chim (Duck Hunt)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Montserrat:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/minigame2.css">
+    <link rel="icon" type="image/png" href="../image/sói.png">
+</head>
+
+<body>
+
+    <div id="sky-stage">
+        <!-- Khu vực thanh điều hướng -->
+        <div class="hud">
+            <!-- Nút Back về Màn 2 -->
+            <a href="level2.html" class="back-link serif-font">&lt;- Back</a>
+
+            <div class="stats">
+                <div class="kpi-text marker-font">KPI: <span id="score">0</span>/15</div>
+                <div class="timer-text marker-font">Time: <span id="timer">60</span>s</div>
+            </div>
+
+            <button id="audio-toggle-btn" class="audio-btn" title="Bật/tắt nhạc súng">🔊</button>
+        </div>
+
+        <!-- Màn hình chờ bắt đầu Game -->
+        <div id="start-screen" class="overlay-screen">
+            <h1 class="serif-font">Trò Chơi Bắn Chim</h1>
+            <p class="marker-font">Diệt 15 mục tiêu để thăng cấp. Sẵn sàng chưa?</p>
+            <button id="start-btn" class="action-btn marker-font">BẮT ĐẦU</button>
+        </div>
+
+        <!-- Màn hình kết xuất -->
+        <div id="end-screen" class="overlay-screen hide">
+            <h1 id="end-title" class="serif-font">...</h1>
+            <p id="end-desc" class="marker-font">...</p>
+            <button id="retry-btn" class="action-btn marker-font hide">Thử lại</button>
+            <button id="next-btn" class="action-btn next-btn marker-font hide">Đi tới Màn 3 -&gt;</button>
+        </div>
+    </div>
+
+    <!-- Script Game Engine Bắn Chim -->
+    <script src="../js/minigame2.js"></script>
+</body>
+
+</html>

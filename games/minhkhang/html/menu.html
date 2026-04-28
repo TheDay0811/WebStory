@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tửu Long - Minh Khang</title>
+    <link rel="icon" type="image/png" href="../assets/dragon_head.png">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="logo">TỬU LONG</div>
+        <nav class="nav-links">
+            <a href="#home" class="active">Trang Chủ</a>
+            <a href="#about">Giới Thiệu</a>
+            <a href="#menu">Đồ Uống</a>
+            <a href="#contact">Liên Hệ</a>
+        </nav>
+        <button class="btn-primary">INQUIRE</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="../assets/imperial_dragon_bg.png" alt="Imperial Dragon">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <p class="subtitle">SOVEREIGN MIGHT REVEALED</p>
+            <h1 class="title">HƯƠNG VỊ CỦA HOÀNG TỘC<br><span class="highlight">TỬU LONG</span></h1>
+            <p class="desc">Witness the convergence of ancient Eastern magic and modern luxury. A legacy forged in gold,
+                whispered in smoke, and destined for the sovereign.</p>
+            <div class="hero-actions">
+                <button class="btn-primary">ENTER THE DYNASTY</button>
+                <button class="btn-outline">VIEW ARTIFACTS</button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>SCROLL TO ASCEND</span>
+            <div class="line"></div>
+        </div>
+    </section>
+
+    <!-- Story / Legend Section -->
+    <section class="story-section" id="about">
+        <div class="story-container">
+            <div class="story-image">
+                <img src="../assets/golden_scales.png" alt="Golden Scales">
+            </div>
+            <div class="story-content">
+                <h2 class="section-title"><span class="line-accent"></span>The Eternal Legend</h2>
+                <p class="story-text">For millennia, Tửu Long has stood as the ultimate sentinel of power and wisdom.
+                    Our collection breathes life into this myth, transforming ancient symbolism into a digital and
+                    physical reality of unparalleled luxury.</p>
+                <div class="story-stats">
+                    <div class="stat">
+                        <h3>Heritage</h3>
+                        <p>Rooted in the dynasties of the East, crafted for the global elite.</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Craft</h3>
+                        <p>Each artifact is a testament to meticulous precision and digital leaf artistry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Collection Section (Từ database.js) -->
+    <section class="collection-section" id="menu">
+        <!-- Nơi main.js sẽ render dữ liệu -->
+        <div id="dynamicCollection"></div>
+    </section>
+
+
+
+    <!-- Main Footer -->
+    <footer class="footer" id="contact">
+        <h3>TỬU LONG</h3>
+        <div class="footer-links">
+            <a href="#">PRIVACY POLICY</a>
+            <a href="#">TERMS OF SERVICE</a>
+            <a href="#">MEDIA</a>
+            <a href="#">GLOBAL PRESENCE</a>
+        </div>
+        <p class="copyright">&copy; 2026 TỬU LONG. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- Modal Xem Chi Tiết -->
+    <div class="modal-overlay" id="drinkModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">×</button>
+            <div class="modal-layout">
+                <div class="modal-image-wrapper">
+                    <img id="modalImg" src="" alt="Image">
+                </div>
+                <div class="modal-details">
+                    <h2 id="modalTitle">Title</h2>
+                    <p class="modal-taste-label">Taste Profile</p>
+                    <p id="modalTaste" class="modal-taste">Taste</p>
+                    <div id="modalDesc" class="modal-desc-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../js/database.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Navbar sticky effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Smooth scroll + active nav
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+                document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Cập nhật active khi cuộn
+        const sections = ['home', 'about', 'menu', 'contact'];
+        window.addEventListener('scroll', () => {
+            // Nếu đã cuộn đến gần cuối trang → luôn highlight Liên Hệ
+            const isAtBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 50;
+            if (isAtBottom) {
+                document.querySelectorAll('.nav-links a').forEach(a => {
+                    a.classList.toggle('active', a.getAttribute('href') === '#contact');
+                });
+                return;
+            }
+
+            let current = 'home';
+            sections.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && window.scrollY >= el.offsetTop - 100) current = id;
+            });
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Minigame 3: Sinh Tồn Vi Khuẩn</title>
+    <!-- Nhúng Font chuẩn Scrapbook -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Patrick+Hand&family=Montserrat:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/minigame3.css">
+    <link rel="icon" type="image/png" href="../image/cú mèo.png">
+
+    <!-- Nhúng thư viện Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+    <div id="game-stage">
+        <!-- Vùng chứa 3D Canvas -->
+        <canvas id="webgl-canvas"></canvas>
+
+        <!-- Khu vực thanh điều hướng (HUD) -->
+        <div class="hud">
+            <!-- Nút Back về Màn 3 -->
+            <a href="level3.html" class="back-link serif-font">&lt;- Back</a>
+
+            <div class="stats">
+                <div class="timer-text marker-font">Sinh Tồn: <span id="timer">0</span>/120s</div>
+            </div>
+
+            <button id="audio-toggle-btn" class="audio-btn" title="Bật/tắt nhạc">🔊</button>
+        </div>
+
+        <!-- Màn hình chờ bắt đầu Game (Và xem trước Model) -->
+        <div id="start-screen" class="overlay-screen bg-transparent">
+            <h1 class="serif-font">Sinh Tồn Vi Khuẩn</h1>
+            <p class="marker-font">Di chuyển Vi khuẩn tránh né các Lá Khiên. Ráng sống sót qua 2 phút!<br></p>
+            <button id="start-btn" class="action-btn marker-font">BẮT ĐẦU</button>
+        </div>
+
+        <!-- Màn hình kết xuất -->
+        <div id="end-screen" class="overlay-screen hide bg-transparent">
+            <h1 id="end-title" class="serif-font">...</h1>
+            <p id="end-desc" class="marker-font">...</p>
+            <button id="retry-btn" class="action-btn marker-font hide">Thử lại</button>
+            <button id="next-btn" class="action-btn next-btn marker-font hide">Đi tiếp -&gt;</button>
+        </div>
+    </div>
+
+    <!-- Script Game Engine Three.js cho Minigame 3 -->
+    <script src="../js/minigame3.js"></script>
+</body>
+
+</html>

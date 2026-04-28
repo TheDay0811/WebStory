@@ -1,0 +1,184 @@
+/* CÀI ĐẶT CHUNG SCARPBOOK DÀNH CHO GIA HÂN */
+html {
+    font-size: 16px;
+}
+/* Scale tỉ lệ lên khi màn hình Laptop lớn/PC */
+@media (min-width: 1400px) {
+    html { font-size: 20px; }
+}
+@media (min-width: 1800px) {
+    html { font-size: 24px; }
+}
+
+body {
+    background-color: #fcf4e4; /* Màu kem/vàng rất nhạt đặc trưng của sổ tay */
+    color: #1a1a1a;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.scrapbook-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+/* KHAI BÁO FONT ĐẶC TRƯNG */
+.marker-font {
+    font-family: 'Patrick Hand', cursive;
+    font-weight: 700;
+}
+.regular-font {
+    font-family: 'Montserrat', sans-serif;
+}
+.serif-font {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+/* QUY TẮC CẮN LỀ & BỐ CỤC */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.font-bold { font-weight: 700; }
+.inline-block { display: inline-block; }
+.flex-row { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.col-50 { width: 50%; }
+.col-60 { width: 60%; }
+.col-40 { width: 40%; }
+.mg-bottom-small { margin-bottom: 20px; }
+.mg-bottom-large { margin-bottom: 100px; }
+
+/* HEADER GIA HÂN */
+.header h1 {
+    font-size: 5rem;
+    letter-spacing: 12px;
+    margin: 0 0 10px 0;
+    color: #000;
+}
+.header .subtitle {
+    font-size: 0.8rem;
+    color: #888;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+/* ẢNH POLAROID VÀ HIỆU ỨNG TILT */
+.polaroid {
+    position: relative;
+    max-width: 100%;
+}
+.polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.dashed-border {
+    border: 3px dashed #111;
+    padding: 4px;
+    background: transparent;
+}
+
+/* Kiểu viền nét bút vẽ tay màu Đỏ */
+.drawn-border-red {
+    border: 6px solid #e1251b; /* Màu đỏ chì/bút lông */
+    border-radius: 5px 25px 5px 25px / 25px 5px 25px 5px; /* Ép viền méo mó ngẫu nhiên */
+    padding: 10px;
+    background: transparent;
+}
+
+.polaroid-frame {
+    background: #fff;
+    padding: 12px 12px 60px 12px; /* Viền dưới cực dày để ghi chữ */
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15); /* Đổ bóng chân thực */
+}
+.polaroid-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tilt-left { transform: rotate(-4deg); }
+.tilt-right { transform: rotate(3deg); }
+
+/* CÁC ĐOẠN TEXT ĐIỂM NHẤN */
+.star-rating {
+    font-size: 4rem;
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: -15px; /* Ép vô sát ảnh */
+}
+
+.regular-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #222;
+}
+
+.small-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.cake-box {
+    max-width: 400px; /* Làm cho bánh nhỏ lại cân đối */
+}
+
+.quote-text {
+    font-size: 3.5rem;
+    letter-spacing: -1px;
+    margin: 0 0 15px 0;
+}
+.big-quote {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* NÚT TƯƠNG TÁC ÂM THANH */
+.play-btn {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #111;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.play-btn:hover {
+    transform: scale(1.15) rotate(-2deg);
+}
+
+/* ĐÁP ỨNG TRÊN ĐIỆN THOẠI (RESPONSIVE) */
+@media (max-width: 768px) {
+    .flex-row {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .reverse-mobile {
+        flex-direction: column-reverse;
+    }
+    .col-50, .col-60, .col-40 { width: 100%; }
+    .header h1 { font-size: 3.5rem; letter-spacing: 8px; }
+    .quote-text { font-size: 2.5rem; }
+    .big-quote { font-size: 2.5rem; }
+    .padding-h-mobile { padding: 0 15px; }
+    .slide-down { margin-top: 30px; }
+}

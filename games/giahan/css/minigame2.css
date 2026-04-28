@@ -1,0 +1,132 @@
+/* Giao diện khung trời bãi bắn */
+body {
+    background-color: #6da4d6; /* Bầu trời xanh nhạt */
+    color: #1a1a1a;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Không cho màn hình cuộn xuống hay dời vì chim bay lọt viền */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.marker-font { font-family: 'Patrick Hand', cursive; }
+.serif-font { font-family: 'Playfair Display', serif; }
+
+#sky-stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Hiệu ứng biến con trỏ chuột thành tâm ngắm (crosshair) súng */
+    cursor: crosshair; 
+}
+
+/* Phần Thanh HUD (Bảng chỉ số) */
+.hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(252, 244, 228, 0.85); /* Nhấn nền kem sổ tay che bầu trời */
+    border-bottom: 3px dashed #111;
+    z-index: 100;
+    position: relative;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #111;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.back-link:hover { padding-left: -5px; }
+
+.stats {
+    display: flex;
+    gap: 30px;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+.kpi-text { color: #d00; }
+
+.audio-btn {
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+/* Class của Con Chim (The Bird Object) */
+.game-bird {
+    position: absolute;
+    width: 80px; /* Kích thước chim */
+    height: auto;
+    object-fit: contain;
+    /* transition: Quản lý cả Left và Top. Linear cho việc bay đều, ease-in cho rơi lực hấp dẫn */
+    transition: top 1.5s ease-in, left linear;
+    cursor: crosshair; /* Chim cũng nhận ngắm chéo */
+    z-index: 10;
+}
+
+.bird-dive {
+    /* Khi bị bắn trúng, rớt xuống thì xoay đầu cắm thẳng cẳng */
+    transform: rotate(70deg);
+}
+.bird-dive.flip {
+    /* Nếu chim bay ngược lại thì cắm đầu xoay kiểu khác */
+    transform: scaleX(-1) rotate(-70deg);
+}
+
+.flip {
+    /* Đảo ngược chim khi bay dòng từ Phải qua Trái */
+    transform: scaleX(-1);
+}
+
+/* Màn Hình Phủ Tương Tác Popup (Bắt đầu / Kết thúc) */
+.overlay-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fcf4e4;
+    border: 5px dashed #111;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    z-index: 200;
+    width: 80%;
+    max-width: 500px;
+}
+.overlay-screen h1 { font-size: 3rem; margin-top: 0; }
+.overlay-screen p { font-size: 1.5rem; }
+
+.action-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 15px 40px;
+    font-size: 2.2rem;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.action-btn:hover { background-color: #333; transform: translateY(-2px); }
+.next-btn { background-color: #0b6623; }
+.next-btn:hover { background-color: #147c31; }
+
+.hide { display: none !important; }
+
+/* Đáp ứng ĐTDĐ */
+@media (max-width: 768px) {
+    .hud { flex-wrap: wrap; padding: 10px; gap: 10px; }
+    .stats { font-size: 1.6rem; width: 100%; justify-content: space-around; order: 3; }
+    .back-link { order: 1; }
+    .audio-btn { order: 2; }
+    .game-bird { width: 60px; } /* Trẻ hoá chim cho dễ tap */
+}

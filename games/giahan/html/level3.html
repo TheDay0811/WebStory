@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Thế Giới Của Gia Hân - Màn 3</title>
+    <!-- Nhúng Font từ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Montserrat:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Nhúng CSS độc quyền của Gia Hân -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../image/cú mèo.png">
+    <style>
+        /* Bố cục flex để đẩy phần nút Play xuống cuối màn hình */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+        .scrapbook-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .empty-space {
+            flex-grow: 1; /* Tự động đẩy nút Play xuống */
+            min-height: 200vh; /* Làm trang dài ra để có thể kéo lên kéo xuống */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scrapbook-container">
+        
+        <!-- Không gian trống bên trong trang -->
+        <div class="empty-space"></div>
+
+        <!-- FOOTER INTERACTION: Nút play ở cuối trang như bình thường -->
+        <section class="flex-row items-center padding-h-mobile">
+            <div class="col-60">
+            </div>
+            <div class="col-40 text-right flex-center" style="margin-left: auto;">
+                <button id="play-btn-3" class="serif-font play-btn">Play -></button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Script tương tác riêng trong game Hân -->
+    <script src="../js/level3.js"></script>
+</body>
+
+</html>
