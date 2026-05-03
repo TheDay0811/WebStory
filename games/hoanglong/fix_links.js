@@ -1,0 +1,1 @@
+const fs = require('fs'); const files = ['html/index.html', 'html/dashboard.html', 'html/status.html', 'html/add-employee.html', 'html/profile.html', 'html/contracts.html', 'html/settings.html']; files.forEach(f => { if(fs.existsSync(f)) { let d = fs.readFileSync(f, 'utf8'); d = d.replace(/href=\\\

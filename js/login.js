@@ -33,7 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     loginBtn.style.opacity = '1';
                     
                     // Chuyển hướng trình tự vào đúng thế giới Game thuộc Account của họ
-                    window.location.href = `../games/${validUser.gameId}/html/index.html`;
+                    if (validUser.gameId === 'hoanglong') {
+                        window.location.href = `../games/${validUser.gameId}/html/dashboard.html`;
+                    } else {
+                        window.location.href = `../games/${validUser.gameId}/html/index.html`;
+                    }
                 } else {
                     alert("Sai tên người dùng hoặc mật khẩu! Chìa khóa không hợp lệ.");
                     // Trả lại trạng thái cho nút

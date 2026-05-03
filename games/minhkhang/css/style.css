@@ -772,3 +772,195 @@ button {
 
     /* Đơn giản hóa trên mobile */
 }
+
+/* =========================================
+   VOLUME CONTROL
+   ========================================= */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-icon {
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.volume-icon:hover {
+    color: var(--text-light);
+}
+
+.volume-slider {
+    -webkit-appearance: none;
+    width: 80px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--text-light);
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--text-light);
+    cursor: pointer;
+    border: none;
+}
+
+/* =========================================
+   INQUIRY WINDOW
+   ========================================= */
+.inquiry-window {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 320px;
+    height: 450px;
+    background: #000;
+    border: 2px solid var(--gold);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1001;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.inquiry-window.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.inquiry-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,215,0,0.1);
+}
+
+.inquiry-header span {
+    font-family: var(--font-heading);
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+#closeInquiry {
+    background: none;
+    color: var(--gold);
+    font-size: 24px;
+    padding: 0;
+}
+
+.inquiry-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inquiry-msg {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.inquiry-avatar {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.inquiry-avatar svg {
+    width: 24px;
+    height: 24px;
+}
+
+.inquiry-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.inquiry-id {
+    font-size: 11px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.inquiry-bubble {
+    background: #fff;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border-bottom-left-radius: 2px;
+    font-size: 13px;
+    max-width: 220px;
+    line-height: 1.4;
+}
+
+.inquiry-footer {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    background: #000;
+}
+
+#inquiryInput {
+    flex: 1;
+    background: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 12px;
+    outline: none;
+    color: #000;
+}
+
+#sendInquiry {
+    background: var(--gold);
+    color: #000;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Custom Scrollbar for Chat */
+.inquiry-body::-webkit-scrollbar {
+    width: 4px;
+}
+.inquiry-body::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 2px;
+}

@@ -83,13 +83,34 @@ Trang Đăng Nhập (`login.html`) không phải là cổng mở vào duy nhất
   - `level3.html`: Đã thêm luồng điều hướng nút Play trỏ tới Màn Minigame 3.
   - `minigame3.html`: Đã dựng sẵn Form giao diện tĩnh với chủ đề "Bắt Tim". Gồm Hệ thống thanh điều hướng HUD (Điểm/Thời gian/Mute) và Màn hình Chờ/Kết thúc. Hiện tại Logic engine bắt tim chưa được code, ấn Play sẽ giả lập thắng sau 3 giây để người dùng test thiết kế UI.
 
-- **Dự án Minh Khang (Tửu Long)**:
+- **Dự án Minh Khang (Tửu Long)** `[CHƯA HOÀN THÀNH]`:
   - **Concept**: Cocktail & Whisky Speakeasy Bar mang âm hưởng Á Đông (Eastern Dragon), sử dụng phong cách thiết kế Dark Luxury (Vàng đồng, Đỏ rượu, Đen).
   - **Cơ sở dữ liệu**: Đã xây dựng `database.js` chứa danh mục sản phẩm (Mock DB) và ánh xạ với hình ảnh thực tế trong thư mục `assets`.
   - **Giao diện Menu (`menu.html` & `style.css`)**: 
     - Khởi tạo thanh điều hướng (Navbar) tự động trượt mượt mà (Scrolled effect) khi người dùng cuộn.
     - Cập nhật phần "The Eternal Legend" với câu chuyện thương hiệu kết hợp nghệ thuật pha chế và thần thoại Phương Đông.
     - **Hệ thống Modal**: Triển khai 1 Modal xem chi tiết đồ uống (Drink Detail) khi nhấp vào sản phẩm từ Collection, và 1 Info Modal nhỏ gọn, thanh lịch hiển thị nội dung các mục Footer (Privacy Policy, Terms of Service, Media hợp tác cùng THEDAY, Global Presence) không cần tải lại trang.
+
+- **Dự án Thiên An**:
+    - Concept: (Chưa xác định cụ thể).
+    - Thông tin đăng nhập: Tài khoản: `thienan` | Mật khẩu: `an1111`.
+
+- **Dự án Hoàng Long (Thăng Long Logistics)**:
+    *   **Concept**: Hệ thống Quản trị Nhân sự (HRM Portal) chuyên nghiệp cho công ty vận tải.
+    *   **Thông tin đăng nhập**: Tài khoản: `hoanglong` | Mật khẩu: `long2507`.
+    *   **Tiến độ chi tiết**:
+        *   **Dashboard & Directory**: Hoàn thiện bảng điều khiển tổng quan và danh sách nhân viên đồng bộ dữ liệu real-time.
+        *   **Quản lý Hợp đồng (Contracts)**: Tự động hóa việc theo dõi thời hạn hợp đồng. Hệ thống tự tính toán số lượng hợp đồng sắp hết hạn (trong 30 ngày) và đã hết hạn. Bộ lọc tìm kiếm hoạt động chính xác theo loại hợp đồng và trạng thái.
+        *   **Thay đổi Trạng thái (Status Management)**: 
+            *   Cho phép cập nhật trạng thái (Active/Resigned/Dismissed) kèm theo lý do cụ thể.
+            *   Tự động cập nhật ngày hết hạn hợp đồng dựa trên logic nghiệp vụ (Nghỉ việc -> Chấm dứt ngay; Quay lại làm -> Gia hạn 1 năm).
+            *   Hệ thống Audit Log: Ghi lại toàn bộ lịch sử thay đổi trạng thái vào bộ nhớ để theo dõi hậu kiểm.
+        *   **Tuyển dụng (Onboarding)**: Form thêm nhân viên mới hỗ trợ đầy đủ các trường dữ liệu nâng cao (CCCD, Ngân hàng, Tài khoản, Ngày hợp đồng).
+        *   **UI/UX Standard**:
+            *   Đồng bộ hóa Header và Việt hóa toàn bộ thanh điều hướng (Sidebar) trên tất cả các trang.
+            *   Tích hợp hệ thống **Toast Notification** chuyên nghiệp thay thế cho alert mặc định.
+        *   **Dữ liệu**: Sử dụng `localStorage` (key: `hoanglong_db` và `hoanglong_status_logs`) để lưu trữ dữ liệu bền vững trên trình duyệt.
+
 
 ## 5. Hướng dẫn cho AI Agent tương lai
 Tuyệt đối tôn trọng kiến trúc tách biệt. Mỗi nhân vật/thế giới là một thư mục riêng bên trong `games/`. Ví dụ, mọi yêu cầu về Tửu Long phải được thực hiện gọn gàng bên trong `games/minhkhang/`. Tránh ghi đè file CSS hay JS ra ngoài cấp root. Mọi hình ảnh mà UX yêu cầu luôn hướng về thư mục chứa media của riêng phân vùng đó.
