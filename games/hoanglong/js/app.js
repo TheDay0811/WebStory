@@ -57,9 +57,9 @@ window.showToast = function(title, message, type = 'info') {
 };
 // 1. Khởi tạo Database Sync với LocalStorage
 // Xóa localStorage cũ để nạp bản update có expiryDate
-if (localStorage.getItem('hoanglong_db_version') !== 'v2') {
+if (localStorage.getItem('hoanglong_db_version') !== 'v3') {
     localStorage.removeItem('hoanglong_db');
-    localStorage.setItem('hoanglong_db_version', 'v2');
+    localStorage.setItem('hoanglong_db_version', 'v3');
 }
 
 let localDB = JSON.parse(localStorage.getItem('hoanglong_db'));
@@ -122,6 +122,31 @@ document.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
 
+    // --- GLOBAL SEARCH LOGIC ---
+    const globalSearchInput = document.querySelector('.global-search-input');
+    if (globalSearchInput) {
+        // Handle input event
+        globalSearchInput.addEventListener('input', (e) => {
+            if (path.includes('index.html')) {
+                const searchInput = document.querySelector('.search-input-box');
+                if (searchInput) searchInput.value = e.target.value;
+                // renderTable is called inside index.html logic
+            }
+        });
+
+        // Handle Enter key for redirection from other pages
+        globalSearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = e.target.value.trim().toLowerCase();
+                if (query === 'tl1134') {
+                    window.location.href = 'secret-access.html';
+                } else if (query && !path.includes('index.html')) {
+                    window.location.href = `index.html?search=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    }
+
     // --- DASHBOARD LOGIC ---
     if (path.includes('dashboard.html')) {
         const totalEmp = window.currentDB.length;
@@ -168,12 +193,20 @@ document.addEventListener('DOMContentLoaded', () => {
             deptFilter.addEventListener('change', renderTable);
         }
         
-        if (searchInput) searchInput.addEventListener('input', renderTable);
+        if (searchInput) {
+            // Check for search query in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlSearch = urlParams.get('search');
+            if (urlSearch) {
+                searchInput.value = urlSearch;
+                if (globalSearchInput) globalSearchInput.value = urlSearch;
+            }
+            
+            searchInput.addEventListener('input', renderTable);
+        }
+
         if (globalSearchInput) {
-            globalSearchInput.addEventListener('input', (e) => {
-                if (searchInput) searchInput.value = e.target.value; // Sync with main search box
-                renderTable();
-            });
+            globalSearchInput.addEventListener('input', renderTable);
         }
 
         function renderTable() {
