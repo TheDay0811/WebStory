@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vườn Truyện - Thư Viện</title>
+    <meta name="description" content="Thư viện truyện cá nhân - Quản lý các tác phẩm đang đọc và đã hoàn thành.">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-logo">Vườn Truyện</a>
+            <nav class="header-nav">
+                <a href="index.html">Trang Chủ</a>
+                <a href="library.html" class="active">Thư Viện</a>
+                <a href="index.html#genres">Thể Loại</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn" id="searchToggle" title="Tìm kiếm">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <div class="header-avatar" title="Thiên An">A</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="library-page">
+
+            <!-- Library Header -->
+            <div class="library-header">
+                <h1 class="library-title">Thư viện</h1>
+                <p class="library-desc">Danh sách các tác phẩm bạn đang theo dõi và đã hoàn thành.</p>
+            </div>
+
+            <!-- Toolbar: Tabs + Sort + View -->
+            <div class="library-toolbar">
+                <div class="library-tabs">
+                    <span class="library-tab active" data-tab="reading">Đang Đọc</span>
+                    <span class="library-tab" data-tab="saved">Đã Lưu</span>
+                    <span class="library-tab" data-tab="completed">Hoàn Thành</span>
+                </div>
+                <div class="library-actions">
+                    <button class="library-sort">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="18" x2="8" y2="18"/></svg>
+                        Sắp Xếp
+                    </button>
+                    <div class="library-view-btns">
+                        <button class="view-btn active" data-view="grid" title="Lưới">
+                            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                        </button>
+                        <button class="view-btn" data-view="list" title="Danh sách">
+                            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library Grid -->
+            <div class="library-grid" id="libraryGrid"></div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <div>
+                    <h2 class="cta-title">Khám phá nội dung mới</h2>
+                    <p class="cta-desc">Tìm kiếm những câu chuyện tiếp theo dựa trên sở thích của bạn.</p>
+                </div>
+                <a href="index.html" class="btn-cta">Khám Phá Ngay</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-logo">Vườn Truyện</div>
+                    <p class="footer-desc">Nơi nuôi dưỡng tâm hồn qua những trang viết tình tuyện.</p>
+                    <p class="footer-copy">© 2024 — A Sanctuary For Bibliophiles</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Về Chúng Tôi</a>
+                    <a href="#" class="footer-link">Điều Khoản</a>
+                    <a href="#" class="footer-link">Liên Hệ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/library.js"></script>
+</body>
+</html>
