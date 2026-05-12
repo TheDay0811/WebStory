@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Chuyển hướng trình tự vào đúng thế giới Game thuộc Account của họ
                     if (validUser.gameId === 'hoanglong') {
                         window.location.href = `../games/${validUser.gameId}/html/dashboard.html`;
+                    } else if (validUser.gameId === 'vandai') {
+                        window.location.href = `../games/${validUser.gameId}/html/taixiu.html`;
                     } else {
                         window.location.href = `../games/${validUser.gameId}/html/index.html`;
                     }

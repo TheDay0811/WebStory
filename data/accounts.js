@@ -28,5 +28,12 @@ const ACCOUNT_DB = [
         role: "player",
         gameId: "hoanglong", // Chìa khóa kích hoạt thư mục games/hoanglong/
         unlockedLevel: 1
+    },
+    {
+        username: "vandai", // Tên đăng nhập của Văn Đại
+        password: "dai04041988",
+        role: "player",
+        gameId: "vandai", // Chìa khóa kích hoạt thư mục games/vandai/
+        unlockedLevel: 1
     }
 ];

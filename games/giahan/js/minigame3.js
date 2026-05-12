@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('start-btn');
     const retryBtn = document.getElementById('retry-btn');
     const nextBtn = document.getElementById('next-btn');
-    
+
     const startScreen = document.getElementById('start-screen');
     const endScreen = document.getElementById('end-screen');
     const endTitle = document.getElementById('end-title');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgmAudio = new Audio('../audio/Về Với Mẹ Cha.mp3');
     bgmAudio.loop = true;
     bgmAudio.volume = 0.6;
-    
+
     let isMuted = false;
     audioToggleBtn.addEventListener('click', () => {
         isMuted = !isMuted;
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ánh sáng
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
-    
+
     const dirLight = new THREE.DirectionalLight(0xffeedd, 0.8);
     dirLight.position.set(10, 20, 20);
     scene.add(dirLight);
@@ -61,15 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
     scene.add(dirLight2);
 
     // ---- XÂY DỰNG MODEL 3D TỪ CODE (PROCEDURAL GENERATION) ----
-    
+
     // 1. CHỦ THỂ: VI KHUẨN (VIRUS)
     function createVirus() {
         const virusGroup = new THREE.Group();
-        
+
         // Lõi Cầu
         const bodyGeo = new THREE.IcosahedronGeometry(1.5, 2);
-        const bodyMat = new THREE.MeshPhongMaterial({ 
-            color: 0x2efa35, 
+        const bodyMat = new THREE.MeshPhongMaterial({
+            color: 0x2efa35,
             emissive: 0x054f0a,
             shininess: 100,
             flatShading: true
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Các Xúc tu (Gai)
         const spikeGeo = new THREE.CylinderGeometry(0.1, 0.3, 1.5, 8);
         const spikeMat = new THREE.MeshPhongMaterial({ color: 0x15a620, flatShading: true });
-        
+
         // Tạo 12 Gai đâm ra bằng toán học hình cầu
         const fibonacci = 12;
         for (let i = 0; i < fibonacci; i++) {
@@ -88,19 +88,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const theta = Math.PI * (1 + Math.sqrt(5)) * i;
 
             const spike = new THREE.Mesh(spikeGeo, spikeMat);
-            
+
             // Tọa độ cầu sang Đề các
             spike.position.x = 1.6 * Math.cos(theta) * Math.sin(phi);
             spike.position.y = 1.6 * Math.sin(theta) * Math.sin(phi);
             spike.position.z = 1.6 * Math.cos(phi);
-            
+
             // Xoay gai hướng ra ngoài
             spike.lookAt(0, 0, 0);
             spike.rotateX(Math.PI / 2); // xoay đít gai vào tâm
-            
+
             virusGroup.add(spike);
         }
-        
+
         // Hitbox Giao diện 2D cho con vi khuẩn (Khoảng Cầu 2.0)
         virusGroup.userData = { radius: 2.0, type: 'player' };
         return virusGroup;
@@ -108,55 +108,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. KẺ THÙ: LÁ KHIÊN BAY (SHIELD)
     function createShield() {
-         // Vẽ 2D Shape của Shield
-         const shape = new THREE.Shape();
-         shape.moveTo(0, -2);
-         shape.quadraticCurveTo(1.5, -1, 1.5, 1);
-         shape.lineTo(1.5, 2);
-         shape.lineTo(0, 1.5);
-         shape.lineTo(-1.5, 2);
-         shape.lineTo(-1.5, 1);
-         shape.quadraticCurveTo(-1.5, -1, 0, -2);
+        // Vẽ 2D Shape của Shield
+        const shape = new THREE.Shape();
+        shape.moveTo(0, -2);
+        shape.quadraticCurveTo(1.5, -1, 1.5, 1);
+        shape.lineTo(1.5, 2);
+        shape.lineTo(0, 1.5);
+        shape.lineTo(-1.5, 2);
+        shape.lineTo(-1.5, 1);
+        shape.quadraticCurveTo(-1.5, -1, 0, -2);
 
-         const extrudeSettings = {
+        const extrudeSettings = {
             depth: 0.5,
             bevelEnabled: true,
             bevelSegments: 2,
             steps: 1,
             bevelSize: 0.1,
             bevelThickness: 0.1
-         };
+        };
 
-         const shieldGeo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
-         // Do ExtrudeGeometry chênh tâm, ta cần dời nó về trung tâm
-         shieldGeo.center(); 
-         
-         const shieldMat = new THREE.MeshPhongMaterial({ 
-             color: 0xaabbcc, 
-             shininess: 150, 
-             specular: 0xffffff,
-             flatShading: true
-         });
-         
-         const shield = new THREE.Mesh(shieldGeo, shieldMat);
-         // Hiệu chỉnh tỉ lệ cho nhỏ lại hợp khung hình
-         shield.scale.set(0.8, 0.8, 0.8);
+        const shieldGeo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+        // Do ExtrudeGeometry chênh tâm, ta cần dời nó về trung tâm
+        shieldGeo.center();
 
-         // Bọc trong Group để dễ thao tác
-         const shieldGroup = new THREE.Group();
-         shieldGroup.add(shield);
+        const shieldMat = new THREE.MeshPhongMaterial({
+            color: 0xaabbcc,
+            shininess: 150,
+            specular: 0xffffff,
+            flatShading: true
+        });
 
-         // Hitbox 2D cho Lá khiên
-         shieldGroup.userData = { 
-             radius: 1.5, 
-             type: 'enemy',
-             rotSpeedX: (Math.random() - 0.5) * 0.1,
-             rotSpeedY: (Math.random() - 0.5) * 0.1,
-             rotSpeedZ: (Math.random() - 0.5) * 0.1,
-             speed: 0
-         };
-         
-         return shieldGroup;
+        const shield = new THREE.Mesh(shieldGeo, shieldMat);
+        // Hiệu chỉnh tỉ lệ cho nhỏ lại hợp khung hình
+        shield.scale.set(0.8, 0.8, 0.8);
+
+        // Bọc trong Group để dễ thao tác
+        const shieldGroup = new THREE.Group();
+        shieldGroup.add(shield);
+
+        // Hitbox 2D cho Lá khiên
+        shieldGroup.userData = {
+            radius: 1.5,
+            type: 'enemy',
+            rotSpeedX: (Math.random() - 0.5) * 0.1,
+            rotSpeedY: (Math.random() - 0.5) * 0.1,
+            rotSpeedZ: (Math.random() - 0.5) * 0.1,
+            speed: 0
+        };
+
+        return shieldGroup;
     }
 
     // ---- BIẾN TRẠNG THÁI GAME ----
@@ -167,15 +167,15 @@ document.addEventListener('DOMContentLoaded', () => {
     scene.add(player);
 
     let enemies = [];
-    
+
     let isGameRunning = false;
     let surviveTime = 0; // Giây
-    let targetTime = 120; // 2 Phút
+    let targetTime = 30; // 30s
     let lastTime = 0; // ms
     let timeAccumulator = 0; // Để đếm sang giây
 
     let spawnTimer = 0;
-    
+
     // Khung chữ nhật lấy tọa độ click -> 3D
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Quy đổi tọa độ
         let clientX = event.clientX;
         let clientY = event.clientY;
-        
+
         if (event.changedTouches) {
             clientX = event.changedTouches[0].clientX;
             clientY = event.changedTouches[0].clientY;
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Bắn tia Raycaster từ Camera xuyên qua mặt phẳng Vector Z=0
         raycaster.setFromCamera(mouse, camera);
-        
+
         // Tìm điểm giao cắt của tia với mặt phẳng ảo (z=0)
         const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
         const targetPos = new THREE.Vector3();
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('mousemove', onPointerMove, false);
-    window.addEventListener('touchmove', onPointerMove, {passive: false});
+    window.addEventListener('touchmove', onPointerMove, { passive: false });
 
     // Resize
     window.addEventListener('resize', () => {
@@ -237,17 +237,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Dọn dẹp chiến trường
         enemies.forEach(e => scene.remove(e));
         enemies = [];
-        
+
         surviveTime = 0;
         timerDisplay.innerText = surviveTime;
         player.position.set(0, -5, 0); // Đặt vi khuẩn ở dưới
-        
+
         startScreen.classList.add('hide');
         endScreen.classList.add('hide');
-        
+
         lastTime = performance.now();
         isGameRunning = true;
-        
+
         // Chờ người chơi nhấp chạm để pass rào cản Autoplay policy của web
         if (!isMuted) {
             bgmAudio.currentTime = 0;
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
         endScreen.classList.remove('hide');
         retryBtn.classList.add('hide');
         nextBtn.classList.add('hide');
-        
+
         if (win) {
             endTitle.innerHTML = "TUYỆT ĐỈNH SINH TỒN!";
             endTitle.style.color = "#0b6623";
@@ -296,15 +296,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 timeAccumulator -= 1000;
                 surviveTime++;
                 timerDisplay.innerText = surviveTime;
-                
+
                 if (surviveTime >= targetTime) {
                     triggerGameOver(true);
                 }
             }
 
             // TÍNH ĐỘ KHÓ: Phù hợp cho màn hình điện thoại
-            const difficultyScale = 1 + (surviveTime / 120) * 1; 
-            
+            const difficultyScale = 1 + (surviveTime / 120) * 1;
+
             // Sinh Khiên thưa hơn: từ 3600ms xuống 1200ms
             const spawnIntervalMs = Math.max(1200, 3600 - (surviveTime / 120) * 2400);
 
@@ -313,14 +313,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (spawnTimer >= spawnIntervalMs) {
                 spawnTimer = 0;
                 let s = createShield();
-                
+
                 // Mọc từ ngẫu nhiên 4 viền: 0=Top, 1=Bottom, 2=Left, 3=Right
                 const edge = Math.floor(Math.random() * 4);
-                const boundX = width / 40; 
-                const boundY = height / 40; 
-                
+                const boundX = width / 40;
+                const boundY = height / 40;
+
                 let startX = 0, startY = 0;
-                
+
                 switch (edge) {
                     case 0: // Top
                         startX = (Math.random() - 0.5) * boundX * 2;
@@ -339,21 +339,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         startY = (Math.random() - 0.5) * boundY * 2;
                         break;
                 }
-                
-                s.position.set(startX, startY, 0); 
-                
+
+                s.position.set(startX, startY, 0);
+
                 // Tính Vector nhắm thẳng vào vị trí hiện tại của Vi Khuẩn để săn đuổi
                 const dx = player.position.x - startX;
                 const dy = player.position.y - startY;
-                const dist = Math.sqrt(dx*dx + dy*dy);
-                
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
                 // Tốc độ bay chậm để dễ chơi trên điện thoại
-                const rawSpeed = (0.027 + Math.random() * 0.02) * difficultyScale; 
-                
+                const rawSpeed = (0.027 + Math.random() * 0.02) * difficultyScale;
+
                 // Cài đặt vector bay cho Khiên
                 s.userData.speedX = (dx / dist) * rawSpeed;
                 s.userData.speedY = (dy / dist) * rawSpeed;
-                
+
                 scene.add(s);
                 enemies.push(s);
             }
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Vì z=0 trên cùng mặt phẳng, ta xét d = sqrt( dx^2 + dy^2 )
                 const dx = player.position.x - e.position.x;
                 const dy = player.position.y - e.position.y;
-                const distance = Math.sqrt(dx*dx + dy*dy);
+                const distance = Math.sqrt(dx * dx + dy * dy);
                 const sumRadius = player.userData.radius + e.userData.radius;
 
                 if (distance < sumRadius) {
@@ -391,14 +391,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Màn hình PREVIEW: Máy tự cho ra Shield lượn vòng quay chậm làm nền
             if (Math.random() < 0.02) {
-                 let s = createShield();
+                let s = createShield();
                 s.position.set((Math.random() - 0.5) * 30, 20, Math.random() * -10); // Đẩy Z ra sau
                 s.userData.speedX = (Math.random() - 0.5) * 0.05;
                 s.userData.speedY = -0.05;
                 scene.add(s);
                 enemies.push(s);
             }
-            
+
             for (let i = enemies.length - 1; i >= 0; i--) {
                 let e = enemies[i];
                 e.position.x += e.userData.speedX;

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TÀI XỈU VIP</title>
+    <link rel="stylesheet" href="../css/taixiu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div class="topbar-left" id="profileBtn" style="cursor: pointer;" title="Nhập mã PIN bí mật">
+                <div class="avatar">D</div>
+                <span class="username">Diệp</span>
+            </div>
+            <h1 class="logo">TÀI XỈU <span>VIP</span></h1>
+            <div class="topbar-right">
+                <div class="balance-box">
+                    <span class="bal-label">SỐ DƯ</span>
+                    <span id="balance" class="bal-value">100.000.000₫</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN GAME -->
+        <main class="game">
+            <!-- LEFT: Game Board -->
+            <section class="board">
+                <!-- Session bar -->
+                <div class="session-bar">
+                    <span class="session-id" id="sessionId">#000001</span>
+                    <div class="history-dots" id="historyDots"></div>
+                    <div class="timer-box">
+                        <span id="countdown" class="timer">15</span>
+                    </div>
+                </div>
+
+                <!-- Play area -->
+                <div class="play-area">
+                    <!-- TÀI -->
+                    <div class="side tai-side" id="taiSide">
+                        <div class="side-players">👥 <span id="taiPlayers">2,093</span></div>
+                        <h2 class="side-label">TÀI</h2>
+                        <div class="side-bet" id="taiBet">0</div>
+                    </div>
+
+                    <!-- DICE -->
+                    <div class="dice-zone">
+                        <div class="dice-ring">
+                            <div id="dice1" class="die"><div class="dice-face f1"><span class="d-dot"></span></div></div>
+                            <div id="dice2" class="die"><div class="dice-face f2"><span class="d-dot"></span><span class="d-dot"></span></div></div>
+                            <div id="dice3" class="die"><div class="dice-face f3"><span class="d-dot"></span><span class="d-dot"></span><span class="d-dot"></span></div></div>
+                        </div>
+                        <div id="totalDisplay" class="total" style="visibility:hidden;">
+                            Tổng: <strong id="totalValue">0</strong>
+                        </div>
+                        <div id="resultDisplay" class="result" style="visibility:hidden;">
+                            <span id="resultText"></span>
+                        </div>
+                    </div>
+
+                    <!-- XỈU -->
+                    <div class="side xiu-side" id="xiuSide">
+                        <div class="side-players">👥 <span id="xiuPlayers">1,805</span></div>
+                        <h2 class="side-label">XỈU</h2>
+                        <div class="side-bet" id="xiuBet">0</div>
+                    </div>
+                </div>
+
+                <!-- Trend Chart -->
+                <div class="trend-section">
+                    <div class="trend-header">BIỂU ĐỒ CẦU BỆT</div>
+                    <div class="canvas-container">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHT: Controls -->
+            <section class="controls">
+                <!-- Chips -->
+                <div class="chips-area">
+                    <div class="chips-label">CHỌN MỨC CƯỢC</div>
+                    <div class="chips-grid">
+                        <button class="chip" data-value="1000">1K</button>
+                        <button class="chip" data-value="10000">10K</button>
+                        <button class="chip" data-value="50000">50K</button>
+                        <button class="chip" data-value="100000">100K</button>
+                        <button class="chip active" data-value="500000">500K</button>
+                        <button class="chip" data-value="5000000">5M</button>
+                        <button class="chip" data-value="10000000">10M</button>
+                        <button class="chip" data-value="50000000">50M</button>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="actions">
+                    <button id="allInBtn" class="btn btn-allin">ALL-IN</button>
+                    <button id="betBtn" class="btn btn-bet" disabled>ĐẶT CƯỢC</button>
+                    <button id="cancelBtn" class="btn btn-cancel">HỦY</button>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-row">
+                    <div class="stat">
+                        <span class="stat-num win" id="winCount">0</span>
+                        <span class="stat-lbl">Thắng</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num lose" id="loseCount">0</span>
+                        <span class="stat-lbl">Thua</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num" id="gameCount">0</span>
+                        <span class="stat-lbl">Ván</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num" id="profitLoss">0₫</span>
+                        <span class="stat-lbl">Lãi/Lỗ</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Warning Modal -->
+        <div id="warningModal" class="modal-overlay active">
+            <div class="modal-box warning-box">
+                <div class="modal-icon">⚠️</div>
+                <h2 class="modal-title">CẢNH BÁO</h2>
+                <p class="modal-desc">Trang web này chỉ nhằm mục đích lên án, không cổ xúy đánh bạc. Tất cả đều là dữ liệu giả, không có nạp hoặc rút tiền liên quan đến việc đánh bạc.</p>
+                <button id="warningOkBtn" class="btn btn-bet modal-btn">TÔI ĐÃ HIỂU</button>
+            </div>
+        </div>
+        <!-- PIN Modal -->
+        <div id="pinModal" class="modal-overlay">
+            <div class="modal-box pin-box">
+                <h2 class="modal-title">NHẬP MÃ PIN</h2>
+                <p class="modal-desc">Vui lòng nhập mã PIN 4 số để truy cập khu vực bí mật.</p>
+                <div class="pin-inputs">
+                    <input type="password" class="pin-input" maxlength="1" pattern="\d*" autocomplete="off">
+                    <input type="password" class="pin-input" maxlength="1" pattern="\d*" autocomplete="off">
+                    <input type="password" class="pin-input" maxlength="1" pattern="\d*" autocomplete="off">
+                    <input type="password" class="pin-input" maxlength="1" pattern="\d*" autocomplete="off">
+                </div>
+                <div class="pin-actions">
+                    <button id="pinCancelBtn" class="btn btn-cancel modal-btn-half">HỦY</button>
+                    <button id="pinConfirmBtn" class="btn btn-bet modal-btn-half">XÁC NHẬN</button>
+                </div>
+                <p id="pinError" class="pin-error"></p>
+            </div>
+        </div>
+    </div>
+    <script src="../js/taixiu.js"></script>
+</body>
+</html>
