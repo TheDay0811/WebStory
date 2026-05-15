@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const storyId = parseInt(params.get('id')) || 1;
-    const chapterNum = parseInt(params.get('ch')) || 12;
+    const chapterNum = parseInt(params.get('ch')) || 1;
 
     const story = STORIES.find(s => s.id === storyId);
     if (!story) return;

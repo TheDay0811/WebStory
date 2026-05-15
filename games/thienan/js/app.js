@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderStoryGrid();
     renderRanking();
     renderGenres();
+    initNavActiveState();
 });
 
 function renderFeatured() {
@@ -15,14 +16,14 @@ function renderFeatured() {
     document.getElementById('featuredDesc').textContent = story.summary;
     document.getElementById('featuredImage').src = story.cover;
     document.getElementById('featuredImage').alt = story.title;
-    document.getElementById('featuredRead').href = `reader.html?id=${story.id}&ch=12`;
+    document.getElementById('featuredRead').href = `reader.html?id=${story.id}&ch=1`;
     document.getElementById('featuredDetail').href = `story.html?id=${story.id}`;
 }
 
 function renderStoryGrid() {
     const grid = document.getElementById('storyGrid');
-    // Lấy 4 truyện mới cập nhật (không phải featured)
-    const stories = STORIES.filter(s => !s.featured).slice(0, 4);
+    // Lấy tất cả truyện
+    const stories = STORIES;
     grid.innerHTML = stories.map(s => `
         <a href="story.html?id=${s.id}" class="story-card">
             <div class="story-card-cover">
@@ -51,20 +52,12 @@ function renderRanking() {
             </div>
         </a>
     `).join('');
-
-    // Ranking tab switching
-    document.querySelectorAll('.ranking-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.ranking-tab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-        });
-    });
 }
 
 function renderGenres() {
     const container = document.getElementById('genreTags');
-    container.innerHTML = GENRES.map((g, i) => `
-        <span class="genre-tag${i === 1 ? ' active' : ''}">${g}</span>
+    container.innerHTML = GENRES.map(g => `
+        <span class="genre-tag">${g}</span>
     `).join('');
 
     container.querySelectorAll('.genre-tag').forEach(tag => {
@@ -73,4 +66,40 @@ function renderGenres() {
             tag.classList.add('active');
         });
     });
+}
+
+function initNavActiveState() {
+    const navLinks = document.querySelectorAll('.header-nav a');
+    const catLink = document.getElementById('nav-categories');
+
+    // Khi bấm vào "Thể Loại" → gạch chân nó, bỏ active các link khác
+    if (catLink) {
+        catLink.addEventListener('click', () => {
+            navLinks.forEach(a => a.classList.remove('active'));
+            catLink.classList.add('active');
+        });
+    }
+
+    // Nếu URL có hash #genres → active "Thể Loại"
+    if (window.location.hash === '#genres') {
+        navLinks.forEach(a => a.classList.remove('active'));
+        if (catLink) catLink.classList.add('active');
+    }
+
+    // Khi scroll ra khỏi vùng genres → trả active về "Trang Chủ"
+    const genresSection = document.getElementById('genres');
+    if (genresSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(a => a.classList.remove('active'));
+                    if (catLink) catLink.classList.add('active');
+                } else if (!window.location.hash) {
+                    navLinks.forEach(a => a.classList.remove('active'));
+                    navLinks[0].classList.add('active'); // Trang Chủ
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(genresSection);
+    }
 }

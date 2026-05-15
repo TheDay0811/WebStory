@@ -49,17 +49,35 @@ function renderDetail(story) {
     // Chapters
     document.getElementById('chapterCount').textContent = `${story.chapters} chương`;
     const listEl = document.getElementById('chapterList');
+    const viewAllBtn = document.getElementById('viewAllChapters');
     const chapters = story.chapterList || [];
-    listEl.innerHTML = chapters.map(ch => `
-        <a href="reader.html?id=${story.id}&ch=${ch.num}" class="chapter-item">
-            <span class="chapter-item-title">Chương ${ch.num}: ${ch.title}</span>
-            <span class="chapter-item-date">${ch.date}</span>
-        </a>
-    `).join('');
+    
+    const renderChapters = (chaps) => {
+        return chaps.map(ch => `
+            <a href="reader.html?id=${story.id}&ch=${ch.num}" class="chapter-item">
+                <span class="chapter-item-title">Chương ${ch.num}: ${ch.title}</span>
+                <span class="chapter-item-date">${ch.date}</span>
+            </a>
+        `).join('');
+    };
+
+    if (chapters.length <= 3) {
+        listEl.innerHTML = renderChapters(chapters);
+        if (viewAllBtn) viewAllBtn.style.display = 'none';
+    } else {
+        listEl.innerHTML = renderChapters(chapters.slice(0, 3));
+        if (viewAllBtn) {
+            viewAllBtn.style.display = 'block';
+            viewAllBtn.addEventListener('click', () => {
+                listEl.innerHTML = renderChapters(chapters);
+                viewAllBtn.style.display = 'none';
+            });
+        }
+    }
 
     // Buttons
     document.getElementById('btnRead').addEventListener('click', () => {
-        window.location.href = `reader.html?id=${story.id}&ch=12`;
+        window.location.href = `reader.html?id=${story.id}&ch=1`;
     });
     document.getElementById('btnSave').addEventListener('click', function() {
         this.textContent = '✓ Đã lưu';
