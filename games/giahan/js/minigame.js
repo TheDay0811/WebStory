@@ -215,7 +215,54 @@ document.addEventListener('DOMContentLoaded', () => {
         bgmAudio.pause(); // Tắt nhạc khi kết thúc màn/thua
     }
 
-    // Vừa vào trang là MÚC LUÔN!
-    startGame();
+    // DOM Elements cho màn hình chờ
+    const startScreen = document.getElementById('start-screen');
+    const startBtn = document.getElementById('start-btn');
+
+    // Mảng ảnh cần tải trước để tránh lỗi hiển thị trên điện thoại di động
+    const imagesToPreload = [
+        '../image/1.png',
+        '../image/2.png',
+        '../image/3.png',
+        '../image/4.png',
+        '../image/5.png',
+        '../image/6.png'
+    ];
+
+    let loadedCount = 0;
+
+    if (startBtn) {
+        startBtn.disabled = true;
+        startBtn.innerText = 'ĐANG TẢI...';
+
+        imagesToPreload.forEach(src => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => {
+                loadedCount++;
+                if (loadedCount === imagesToPreload.length) {
+                    startBtn.disabled = false;
+                    startBtn.innerText = 'BẮT ĐẦU';
+                }
+            };
+            img.onerror = () => {
+                loadedCount++;
+                if (loadedCount === imagesToPreload.length) {
+                    startBtn.disabled = false;
+                    startBtn.innerText = 'BẮT ĐẦU';
+                }
+            };
+        });
+
+        startBtn.addEventListener('click', () => {
+            if (startScreen) {
+                startScreen.classList.add('hide');
+            }
+            startGame();
+        });
+    } else {
+        // Fallback phòng hờ không tìm thấy startBtn
+        startGame();
+    }
 
 });
