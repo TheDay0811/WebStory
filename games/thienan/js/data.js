@@ -95,12 +95,14 @@ const STORIES = [
         rating: 5.0,
         ratingCount: 0,
         views: 0,
-        chapters: 1,
+        chapters: 3,
         featured: false,
-        summary: "Xin chào các đọc giả, :> tôi không biết dẫn chuyện vào như thế nào để mọi người cuốn hút. Tớ ở đây để kể 1 chút về tớ...",
-        fullSummary: "Xin chào các đọc giả, :> tôi không biết dẫn chuyện vào như thế nào để mọi người cuốn hút. Tớ ở đây để kể 1 chút về tớ, Tớ là là 1 cô gái dễ thương như bao cô gái khác, sở thích là viết lách...",
+        summary: "Có những lựa chọn cả đời này tớ sẽ chẳng dám chọn",
+        fullSummary: "Có những lựa chọn cả đời này tớ sẽ chẳng dám chọn",
         chapterList: [
-            { num: 1, title: "Bạn và Tôi", date: "Hôm nay" }
+            { num: 1, title: "Bạn và Tôi", date: "Hôm nay" },
+            { num: 2, title: "Người Thân", date: "Hôm nay" },
+            { num: 3, title: "Cái Đuôi", date: "Hôm nay" }
         ]
     }
 ];
@@ -3849,12 +3851,40 @@ const CHAPTER_CONTENT = {
             title: "BẠN VÀ TÔI",
             storyTitle: "?TÔI LÀ SAO",
             genre: "Tâm Lý",
+            nextChapter: { num: 2, title: "NGƯỜI THÂN" },
             content: [
                 "Xin chào các đọc giả, :> tôi không biết dẫn chuyện vào như thế nào để mọi người cuốn hút. Tớ ở đây để kể 1 chút về tớ, Tớ là là 1 cô gái dễ thương như bao cô gái khác, sở thích là viết lách, kiểu giống như mấy đứa con trai thích chơi game. =)) Mấy ông con trai nghiện game là vì mấy ông không thật sự điều kiển được cuộc sông của mình đúng không? Nói vậy thôi ai muốn chơi gì thì chơi.",
                 "Chủ yếu hôm nay tớ muốn tâm sự với mọi người 1 xíu, tớ biết cuộc sống của tớ mà đi so sánh với những người thật sự Khổ thì tớ chẳng là cái móng gì cả. Chuyện là tớ đã mồ côi mẹ từ nhỏ, tớ lớn lên với bà nội và cha, cha tôi bảo mẹ đã mất khi sinh tôi ra, thật ra dù không có mẹ thì tớ vẫn cảm thấy không vấn đề gì cả vì cha tôi rất yêu thương tôi.",
                 "Nội tớ bán tàu hủ chén ăn kèm nước đường với tí gừng nên từ nhỏ tớ hay đi ra chợ chơi với nội. Ngoài chợ tớ cũng đãn chứng kiến khá nhiều câu chuyện như chửi bới nhau vì chiếm chỗ bán của nhau, người thì nhậu nhẹt, hút, chitsttttt, cờ bạc nhưng người khổ nhất chưa bao giờ là những người đó mà là người thân của họ. Dù không phải được sinh ra giàu có nhưng tớ khá tự hào khi không phải sinh ra trong những gia đình như thế, Cha tôi hơi bị tốt.",
-                "Hmmm, tớ cũng ghét đi học, không phải việc học khó vô đầu hay gì mà hồi cấp 2 tớ hay bị nói là không có má, cái gì xảy ra thì mọi người cũng có thể nghỉ là mình làm, hồi xưa tớ còn bị đánh nữa. Tớ hận lắm chứ nhưng giờ thì tớ cũng không còn nghĩ nhiều về điều đó nữa, nhưng nếu là người khác thì chắc là chắc hận đến bây giờ hoặc để lại vết thương tâm lý rồi.",
+                "Hmmm, tớ cũng ghét đi học, không phải việc học khó vô đầu hay gì mà hồi cấp 2 tớ hay bị nói là không có cha má, cái gì xảy ra thì mọi người cũng có thể nghỉ là mình làm, hồi xưa tớ còn bị đánh nữa. Tớ hận lắm chứ nhưng giờ thì tớ cũng không còn nghĩ nhiều về điều đó nữa, nhưng nếu là người khác thì chắc là chắc hận đến bây giờ hoặc để lại vết thương tâm lý rồi.",
                 "Còn chuyện về tình cảm :3, chuyện là năm cấp 2 trước ngày sinh nhật của hân 1 ngày thì khang bị mất cái bóp, tớ đã thấy thái và quyên lén vào lớp moi cặp khang vào giờ ra chơi. Tớ tưởng mọi chuyện chẳng liên quan đến mình nên chả thèm nói đến ai ngời lại bị đổ thừa và ra về còn bị đánh, may có khang ra nói đỡ vì dù sao cũng là bóp của thằng này. Từ đó lúc nào cái thằng này cứ đi theo tớ hỏi nay ăn gì chưa, có đói không,…(tui còn bị nó ám lên đến năm cấp 3)"
+            ]
+        },
+        2: {
+            title: "NGƯỜI THÂN",
+            storyTitle: "?TÔI LÀ SAO",
+            genre: "Tâm Lý",
+            prevChapter: { num: 1, title: "BẠN VÀ TÔI" },
+            nextChapter: { num: 3, title: "CÁI ĐUÔI" },
+            content: [
+                "Uống nước nhiều vô coi chừng bị bệnh đó, hồi Cha tôi còn sống lúc nào cũng dặn tôi phải uống nhiều nước mặc dù lúc đó tôi mới đầu cấp 1 nên chả hiểu gì cả. Tuy chả hiểu gì cả chứ tôi luôn nhớ cha tôi là 1 người cực kì diệu dàng, tôi đòi gì cũng được không bao giờ cha tôi từ chối. Nội kể hồi tôi được nhặt trước cửa nhà thì tôi khóc rất to, sau đó cha tôi bế tôi thì tôi nín hẳn. Nội tôi định kêu cha đem lên phường trình báo rồi nhưng duyên số sao thì cha lại nhận nuôi tôi.",
+                "Nội chỉ kể những chuyện đó cho tôi khi không có cha nhưng lúc đó nhở quá chả hiểu gì, à mà nội còn nói mấy chuyện đó cho tôi nghe thì sẽ bị cha la cho 1 trận nên chỉ nghe thôi. Tôi thì cũng thương nội lắm, xếp sau cha tôi thôi vì nội khá nghiêm khắc, ngồi cạnh lúc tôi học với đưa rước tôi đi học, nấu đồ ăn, hay chửi tôi nữa. Đó giờ đi học tôi hay nhịn cho qua chuyện chỉ chăm học nên cũng ít bạn bủa mà tôi bị quýnh thì về nội thấy tôi bị tương 1 ít tra hỏi dữ luôn á sau đó còn vô trường quậy 1 chập nữa.",
+                "Có 1 ngày tôi cũng không nhớ rõ vì tui còn nhỏ quá có 1 bà cô lạ hoắc đến nhà tôi, trước đó cha tôi đang dỗ cho tui ngủ tui thì giả vờ ngủ như diễn viên chuyên nghiệp để khỏi ngủ trưa :>. Tớ đã nghe lén dù khi còn nhỏ chả hiểu gì nhưng giờ tớ đã biết, đó là mẹ mình bà ta tới để đưa mình đi, dù chẳng rõ mục đích nhưng chắc chắn tớ cũng sẽ không đi và thật ra cha tớ cũng không chịu nên đã cố đuổi bà ta về."
+            ]
+        },
+        3: {
+            title: "CÁI ĐUÔI",
+            storyTitle: "?TÔI LÀ SAO",
+            genre: "Tâm Lý",
+            prevChapter: { num: 2, title: "NGƯỜI THÂN" },
+            content: [
+                "Cái ngày bà ta tới là ngày bắt đầu chuỗi bi kịch, tui nguyền rủa bà chết không nhắm mắt. Sau ngày đó mỗi lần bà ta tới thì cha tôi sẽ đưa bả 1 số tiền rồi bà ta sẽ đi, tớ đã nghĩ cha tôi nợ con mụ già khốn nạn đó 1 số tiền lớn. Nhưng sự thật là không, bà ta cứ qua đòi tiền 1 thời gian thì gia đình tôi cạn kiệt kinh tế, bà ta nói nếu không có tiền thì đưa con cho bà ta nuôi. Cha tôi đã thỏa thuận với con svat đó rằng hôm sau cha sẽ chở bả 1 chuyến đến nhà 1 người họ hàng và đưa tiền ngay tại đó cho bà ta an tâm.",
+                "Hôm sau cha tôi đã đi và không bao giờ trở lại, từ ngày hôm đó nội tớ đã suy sụp gần như là bỏ ăn chỉ sống cho qua ngày, cái ngày mà nhận xác bà khóc rất nhiều chắc là vì cha tôi là con một. Hôm đó ông đã lấy xe của công ty để đi nên gần như đám ma có khá nhiều người từ công ty đến trong đó có chú Long chú đã đưa cho tớ trước 1 số tiền bảo hiểm để trang trãi cuộc sống, chú là người đứng ra lo đám ma sau này đã hỗ trợ học phí cho tôi nữa.",
+                "9 Năm kể từ lúc đó, nội thì cứ điên điên khùng khùng bà cứ gặp người nào trạc trạc tuổi của cha tôi thì cứ đòi kéo người ta về ăn cơm, ở nhà thì bà cứ nhìn mãi ra ngoài đường như đợi 1 ai đó, khi tôi kêu nội ăn cơm thì bà cứ nằn nặt đòi đợi cha tôi về, sức khỏe dần tụt dốc nội đã qua đời sau 2 năm.",
+                "Hiện tại trãi qua 7 năm cô độc,  1 đứa không cha không mẹ không người thân, tớ đã cố gắng học tập để tìm ra 1 lý do để sống tiếp, tớ đã nghĩ nếu cố gắng hết sức để có tương lai.",
+                "Rồi để làm gì, có người thì cố gắng để sau này phụng dưỡng người nuôi dạy, có người cố gắng để trả thù những người đã từng hại mình. Nhưng tớ chẵng còn ai cả, người thân xung quanh không còn người để bản thân có thể cố gắng.",
+                "Tối nay trời mát nhỉ hay do mình đứng chỗ cao, nay mình 18 tuổi rồi đã đọc bức thư cha gửi rồi, sao cha đến lúc biết bản thân sắp chết còn xin lỗi nhiều vậy, tôi còn nghĩ cha sẽ viết nhiều thứ trong đây lắm như kể cho tôi nghe sự thật mà cha cố giấu cả đời của mình hay trách tớ đem lại vận xui cho gia đình cha. Sao tôi lại sống đến giờ nhỉ, có thể người đáng nguyền rủa không phải con đàn bà đó mà là tôi nhỉ nếu không được sinh ra nếu không được cha vô tình nhặt.",
+                "Thì Mọi Chuyện Đã Kết Thúc."
             ]
         }
     }
